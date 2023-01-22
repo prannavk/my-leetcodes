@@ -1,0 +1,24 @@
+class MyStack {
+
+    private java.util.Deque<Integer> mysdq;
+    
+    public MyStack() {
+        this.mysdq = new java.util.ArrayDeque<Integer>();
+    }
+    
+    public void push(int x) {
+        this.mysdq.offerLast(Integer.valueOf(x));
+    }
+    
+    public int pop() {
+        return this.mysdq.pollLast().intValue();
+    }
+    
+    public int top() {
+        return this.mysdq.peekLast().intValue();
+    }
+    
+    public boolean empty() {
+        return this.mysdq.isEmpty();
+    }
+}

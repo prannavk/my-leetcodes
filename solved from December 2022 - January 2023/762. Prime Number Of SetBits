@@ -1,0 +1,38 @@
+class Solution {
+    public int countPrimeSetBits(int left, int right) {
+        int ct = 0;
+		boolean c = false;
+		for (int i = left; i <= right; i++) {
+			int cbits = Solution.returnNoOfSetBits(i);
+			if (Solution.isPrime(cbits))
+				c = true;
+			if (c)
+				ct += 1;
+			c = false;
+		}
+		return ct;
+    }
+
+    private static boolean isPrime(int n) {
+		if (n <= 1)
+			return false;
+		if (n <= 3)
+			return true;
+		if (n % 2 == 0 || n % 3 == 0)
+			return false;
+		for (int i = 5; i * i <= n; i = i + 6)
+			if (n % i == 0 || n % (i + 2) == 0)
+				return false;
+		return true;
+	}
+
+    private static int returnNoOfSetBits(int N) {
+		short c = 0;
+		while (N != 0) {
+			N = N & (N - 1);
+			c++;
+		}
+		return (int) c;
+	}
+
+}
